@@ -1,16 +1,18 @@
 pipeline {
     agent any
+    triggers {
+        pollSCM('* * * * *')
+    }
     stages {
         stage('Build') {
             steps {
                 sh 'echo "Building..."'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'echo "Running tests..."'
-                sh 'exit 1' // Properly fail the pipeline hehe :)
-            }
+    }
+    post {
+        success {
+            discordSend color: 'good', webhookUrl: 'https://discord.com/api/webhooks/your-webhook-url', message: 'Build succeeded'
         }
     }
 }
