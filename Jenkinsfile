@@ -2,7 +2,8 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            sh
+            sh'
+            fetbgdiu
             // Making this error itentionally
         }
     }
