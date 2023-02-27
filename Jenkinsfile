@@ -2,9 +2,15 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            sh'
-            fetbgdiu
-            // Making this error itentionally
+            steps {
+                sh 'echo "Building..."'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+                sh 'exit 1' // Properly fail the pipeline hehe :)
+            }
         }
     }
 }
